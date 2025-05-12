@@ -42,7 +42,16 @@ class ArrayParser
             Console.WriteLine(num);
         }
     }
-    // static int[]  convertStrsToInts(string[]  strs) {}
+
+    static int[] convertStrsToInts(string[] strs)
+    {
+        int[] newArr = new int[strs.Length];
+        for (int inx = 0; inx < strs.Length; inx++ )
+        {
+            newArr[inx] = int.Parse(strs[inx]);
+        }
+        return newArr;
+    }
     static void play()
     {
         string[] inputArr = GetInput();
@@ -54,7 +63,7 @@ class ArrayParser
         else
         {
             Console.WriteLine("good");
-            // int[]  secondList = convertStrsToInts(inputArr);
+            int[]  numbersArrey = convertStrsToInts(inputArr);
             // int action = DisplayMenu();
             // if (action != 6)
             // {
