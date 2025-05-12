@@ -3,23 +3,28 @@
 class ArrayParser
 {
     
-    static bool ValidateList(List<string> list) {}
-    static List<string> GetInput() {}
+    static bool ValidateList(string[] inputArray) {}
+    static string[] GetInput()
+    {
+        Console.WriteLine("enter your numbers: ");
+        string input = Console.ReadLine();
+        return input.Split(' ');
+    }
     static int DisplayMenu() {}
-    static void Implement(int action, List<int> list) {}
+    static void Implement(int action, int[]  list) {}
     static void Print(List<int> list) {}
-    static List<int> convertStrsToInts(List<string> strs) {}
+    static int[]  convertStrsToInts(string[]  strs) {}
     static void play()
     {
-        List<string> firstList = GetInput();
-        bool listValid = ValidateList(firstList);
+        string[] inputArr = GetInput();
+        bool listValid = ValidateList(inputArr);
         if (!listValid)
         {
             play();
         }
         else
         {
-            List<int> secondList = convertStrsToInts(firstList);
+            int[]  secondList = convertStrsToInts(inputArr);
             int action = DisplayMenu();
             if (action != 6)
             {
