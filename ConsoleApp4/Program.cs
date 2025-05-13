@@ -2,7 +2,6 @@
 
 class ArrayParser
 {
-
     //validate
     //1: their are 3 items in arr
     //2: the items are numbers not strings
@@ -132,7 +131,8 @@ class ArrayParser
         switch (action)
         {
             case "1":
-                play();
+                string[] args = new string[0];
+                play(args);
                 break;
             case "2":
                 PrintArr(arr);
@@ -159,6 +159,7 @@ class ArrayParser
                 Console.WriteLine("the sum is: " + arr.Sum());
                 break;
             case "10":
+                Environment.Exit(0); //0 is exit status
                 break;
             default:
                 Console.WriteLine("Invalid action");
@@ -166,28 +167,31 @@ class ArrayParser
         }
     }
 
-    static void play()
+    static void play(string[] args)
     {
-        string[] inputArr = GetInput();
-        bool listValid = ValidateInput(inputArr);
+        if (args.Length == 0)
+        {
+            args = GetInput();
+        }
+        bool listValid = ValidateInput(args);
         if (!listValid)
         {
-            play();
+            args = GetInput();
+            play(args);
         }
         else
         {
-            int[] numbersArray = ConvertStrsToInts(inputArr);
+            int[] numbersArray = ConvertStrsToInts(args);
             string action = "";
-            while (action!="10")
+            while (action != "10")
             {
                 action = DisplayMenu();
                 Implement(action, numbersArray);
             }
         }
     }
-
     static void Main(string[] args)
     {
-        play();
+        play(args);
     }
 }
